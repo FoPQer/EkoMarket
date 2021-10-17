@@ -163,10 +163,12 @@ public class MainController {
         for (Product product : actionUser.getProducts()) {
             sum += product.getPrice();
         }
+        sum = (double)Math.round(sum*100)/100;
         actionUser.getProducts().clear();
         userRepos.save(actionUser);
 
-        model.put("message", "Ваш заказ на сумму " + sum + "руб. успешно оформлен! Спасибо за использование нашего сервиса!");
+        if(sum != 0.0)
+            model.put("message", actionUser.getName() + ", Ваш заказ на сумму " + sum + "руб. успешно оформлен! Спасибо за использование нашего сервиса!");
 
         return test(model);
     }

@@ -21,7 +21,7 @@ public class User implements UserDetails {
     private String name;
     private String lastName;
     private String birthDay;
-    private boolean active;
+    private final boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Product> products;

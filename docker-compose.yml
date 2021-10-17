@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  docker-mysql:
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: on-failure
+    environment:
+      - MYSQL_PASSWORD=sasha333
+      - MYSQL_USER=FoPeR
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_example
+      - MYSQL_ROOT_HOST='%'
+  Eco:
+    container_name: springboot-courseword
+    image: siddharth67/springboot-mysql
+    build: ./
+    ports:
+      - "8080:8080"
+    environment:
+      - WAIT_HOSTS=mysql:3306
+      - UPLOAD_PATH=.
+      - UPLOAD_PATH_WITHOUT_IMAGES=.
+    depends_on:
+      - docker-mysql
+    expose:
+      - "8080"

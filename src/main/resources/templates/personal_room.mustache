@@ -122,7 +122,9 @@
                 {{/products}}
             {{/user}}
             {{#message}}
-                {{message}}
+                <blockquote class="blockquote text-center">
+                    <p>{{message}}</p>
+                </blockquote>
             {{/message}}
             {{^message}}
             {{#productsBool}}
@@ -140,9 +142,11 @@
                 </div>
             {{/productsBool}}
             {{^productsBool}}
-                <p class="card-text mt-5" style="text-align: center">
+            <blockquote class="blockquote text-center mt-5">
+                <p>
                     Ваша корзина пуста
                 </p>
+            </blockquote>
             {{/productsBool}}
             {{/message}}
         </div>
